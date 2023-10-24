@@ -1,0 +1,6 @@
+{
+    "java.debug.settings.exceptionBreakpoint.skipClasses": [
+    
+    ],
+    "emmet.includeLanguages": { "javascript": "javascriptreact" }, "emmet.triggerExpansionOnTab": true
+}
