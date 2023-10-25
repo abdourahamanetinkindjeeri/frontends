@@ -76,7 +76,7 @@ export default function Carlist() {
       .catch((err) => console.error(err));
   };
   const oneDelClick = (url) => {
-    if (window.confirm("Etait vous sur de bien supprime ?"))
+    if (window.confirm("Etes-vous sur de bien supprime ?"))
       fetch(url, { method: "DELETE" })
         .then((reponse) => {
           if (reponse.ok) {
