@@ -1,4 +1,5 @@
 import {
+  Button,
   Dialog,
   DialogActions,
   DialogContent,
@@ -9,6 +10,8 @@ import IconButton from "@mui/material/IconButton";
 import EditIcon from "@mui/icons-material/Edit";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
+import CancelSharpIcon from "@mui/icons-material/CancelSharp";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 export default function EditCar(props) {
   const [open, setOpen] = useState(false);
@@ -89,8 +92,13 @@ export default function EditCar(props) {
           </Stack>
         </DialogContent>
         <DialogActions>
-          <button onClick={handleClose}>Cancel</button>
-          <button onClick={handleSave}>Save</button>
+          <Button onClick={handleClose}>
+            {" "}
+            <CancelSharpIcon color="error" />{" "}
+          </Button>
+          <Button onClick={handleSave}>
+            <CheckCircleOutlineIcon color="success" />
+          </Button>
         </DialogActions>
       </Dialog>
     </div>

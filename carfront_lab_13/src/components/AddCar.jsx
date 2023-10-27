@@ -8,6 +8,9 @@ import React, { useState } from "react";
 import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import Stack from "@mui/material/Stack";
+import AddCircleOutlinedIcon from "@mui/icons-material/AddCircleOutlined";
+import CancelSharpIcon from "@mui/icons-material/CancelSharp";
+import CheckCircleOutlineIcon from "@mui/icons-material/CheckCircleOutline";
 
 export default function AddCar(props) {
   const [open, SetOpen] = useState(false);
@@ -30,21 +33,21 @@ export default function AddCar(props) {
   };
   const handleSave = () => {
     props.addCar(car);
-    // setCar({
-    //   ...car,
-    //   brand: "",
-    //   model: "",
-    //   color: "",
-    //   year: "",
-    //   fuel: "",
-    //   price: "",
-    // });
+    setCar({
+      ...car,
+      brand: "",
+      model: "",
+      color: "",
+      year: "",
+      fuel: "",
+      price: "",
+    });
     handleClose();
   };
   return (
     <div>
       <Button variant="contained" onClick={handleOpen}>
-        +
+        <AddCircleOutlinedIcon />
       </Button>
       <Dialog open={open} onClose={handleClose}>
         <DialogTitle> Nouvelle Voiture </DialogTitle>
@@ -87,8 +90,13 @@ export default function AddCar(props) {
           </Stack>
         </DialogContent>
         <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-          <Button onClick={handleSave}>Save</Button>
+          <Button onClick={handleClose}>
+            {" "}
+            <CancelSharpIcon color="error" />{" "}
+          </Button>
+          <Button onClick={handleSave}>
+            <CheckCircleOutlineIcon color="success" />
+          </Button>
         </DialogActions>
       </Dialog>
     </div>
