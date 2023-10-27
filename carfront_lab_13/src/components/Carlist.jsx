@@ -45,15 +45,20 @@ export default function Carlist() {
   }, []);
 
   const fetchCars = () => {
-    fetch(SERVER_URL + "api/cars")
+    const token = sessionStorage.getItem("jwt");
+    fetch(SERVER_URL + "api/cars", {
+      headers: { Authorization: token },
+    })
       .then((reponse) => reponse.json())
       .then((data) => setCards(data._embedded.cars))
       .catch((err) => console.error(err));
   };
+
   const addCar = (car) => {
+    const token = sessionStorage.getItem("jwt");
     fetch(SERVER_URL + "api/cars", {
+      headers: { Authorization: token, "Content-Type": "application/json" },
       method: "POST",
-      headers: { "Content-Type": "application/json" },
       body: JSON.stringify(car),
     })
       .then((reponse) => {
@@ -64,9 +69,10 @@ export default function Carlist() {
       .catch((err) => console.error(err));
   };
   const updateCar = (car, link) => {
+    const token = sessionStorage.getItem("jwt");
     fetch(link, {
       method: "PUT",
-      headers: { "Content-Type": "application/json" },
+      headers: { Authorization: token, "Content-Type": "application/json" },
       body: JSON.stringify(car),
     })
       .then((reponse) => {
@@ -76,8 +82,9 @@ export default function Carlist() {
       .catch((err) => console.error(err));
   };
   const oneDelClick = (url) => {
-    if (window.confirm("Etes-vous sur de bien supprime ?"))
-      fetch(url, { method: "DELETE" })
+    const token = sessionStorage.getItem("jwt");
+    if (window.confirm("Etes vous sur de bien supprime ?"))
+      fetch(url, { method: "DELETE", headers: { Authorization: token } })
         .then((reponse) => {
           if (reponse.ok) {
             fetchCars();
